@@ -15,8 +15,10 @@ def text(update: Update, context: CallbackContext):
     bot = context.bot
     message = update.message.text
     chat_id = update.message.chat.id
-
-    bot.sendMessage(chat_id=chat_id, text=message)
+    like = 0
+    dislike = 0
+    text = f"LIKE: {like}\nDISLIKE: {dislike}"
+    bot.sendMessage(chat_id=chat_id, text=text)
 
 updater = Updater(token=TOKEN)
 
