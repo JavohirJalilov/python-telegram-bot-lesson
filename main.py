@@ -1,12 +1,18 @@
-import telegram
+from telegram.ext import CallbackContext, Updater, MessageHandler, Filters
+from telegram import Update
+
 import os 
 
 TOKEN = os.environ['TOKEN']
 
-bot = telegram.Bot(TOKEN)
 
-update = bot.getUpdates()[-1]
+def text(update: Update, context: CallbackContext):
+    message = update.message.text
+    chat_id = update.message.chat.id
+    print(message, chat_id)
 
-chat_id = update.message.chat.id
+updater = Updater(token=TOKEN)
 
-bot.sendMessage(chat_id, "123")
+updater.dispatcher.add_handler(MessageHandler(Filters.text, text))
+
+updater.start_polling()
