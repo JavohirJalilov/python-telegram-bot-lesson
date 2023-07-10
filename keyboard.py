@@ -6,7 +6,7 @@ TOKEN = os.environ["TOKEN"]
 
 bot = telegram.Bot(TOKEN)
 
-button1 = KeyboardButton(text='Button1')
+button1 = KeyboardButton(text='Button1', request_contact=True)
 button2 = KeyboardButton(text='Button2')
 
 buttons = [
