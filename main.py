@@ -1,33 +1,31 @@
 from telegram.ext import CallbackContext, Updater, MessageHandler, Filters, CommandHandler
-from telegram import Update
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, ReplyKeyboardMarkup
 
 import os 
 
 TOKEN = os.environ['TOKEN']
 
-like = 0
-dislike = 0
 def start(update: Update, context: CallbackContext):
     chat_id = update.message.chat.id
     bot = context.bot
+    # like emoji unicode: U+1F44D
+    # dislike emoji unicode: U+1F44E
+    like = KeyboardButton(text = '\U0001F44D')
+    dislike = KeyboardButton(text = '\U0001F44E')
 
-    bot.sendMessage(chat_id, "Bizning botga hush kelibsiz!")
+    keyboard = ReplyKeyboardMarkup([
+        [like, dislike]
+    ], resize_keyboard=True)
+
+    bot.sendMessage(chat_id=chat_id, text="Click like or dislike", reply_markup=keyboard)
 
 def text(update: Update, context: CallbackContext):
 
-    global like
-    global dislike
-    
     bot = context.bot
     message = update.message.text
     chat_id = update.message.chat.id
-    if message == "👍":
-        like += 1
-    elif message == "👎":
-        dislike += 1
-   
-    text = f"LIKE: {like}\nDISLIKE: {dislike}"
-    bot.sendMessage(chat_id=chat_id, text=text)
+
+    bot.sendMessage(chat_id=chat_id, text=message)
 
 updater = Updater(token=TOKEN)
 
