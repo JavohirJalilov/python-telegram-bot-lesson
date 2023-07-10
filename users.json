@@ -1,0 +1,11 @@
+{
+    "user1_id": {
+        "like":0,
+        "dislike":0
+    },
+    
+    "user2_id": {
+        "like": 0,
+        "dislike": 0
+    }
+}
