@@ -1,11 +1,14 @@
 {
-    "user1_id": {
-        "like":0,
-        "dislike":0
+    "5575549228": {
+        "like": 2,
+        "dislike": 3
     },
-    
-    "user2_id": {
-        "like": 0,
-        "dislike": 0
+    "1336583023": {
+        "like": 2,
+        "dislike": 3
+    },
+    "1937466761": {
+        "like": 3,
+        "dislike": 4
     }
 }
