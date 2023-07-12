@@ -4,9 +4,11 @@ import json
 class LikeDB:
     def __init__(self, path):
         self.path = path
-
-        with open(path) as f:
-            self.data = json.load(f)
+        try:
+            with open(path) as f:
+                self.data = json.load(f)
+        except:
+            self.data = {}
 
 
     def get_likes(self):
